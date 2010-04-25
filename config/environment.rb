@@ -10,7 +10,9 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem 'haml'
   config.gem 'formtastic'
-  config.gem 'authlogic'
+  config.gem 'authlogic', :version => '>= 2.1.3'
+  config.gem 'rpx_now', :version => '>= 0.6.12', :source => 'http://gemcutter.org'
+  config.gem 'authlogic_rpx', :version => '>= 1.1.1', :source => 'http://gemcutter.org'
 
   # Skip frameworks you're not going to use. To use Rails without a database,
   # you must remove the Active Record framework.

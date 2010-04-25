@@ -7,9 +7,13 @@ ActionController::Routing::Routes.draw do |map|
   # Sign in
   map.sign_in '/sign-in', :controller => 'user_sessions', :action => 'new', :conditions => {:method => :get}
   map.create_user_session '/sign-in', :controller => 'user_sessions', :action => 'create', :conditions => {:method => :post}
+  map.rpx '/rpx', :controller => 'user_sessions', :action => 'create'
 
   # Sign out
   map.sign_out '/sign-out', :controller => 'user_sessions', :action => 'destroy'
+
+  # Profile
+  map.resource :user, :as => 'profile', :only => [:edit, :update]
 
   map.root :controller => 'home'
 end

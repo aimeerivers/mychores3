@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :find_user, :only => [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -12,6 +14,24 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:success] = 'Profile updated successfully.'
+      redirect_to edit_user_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def find_user
+    @user = current_user
   end
 
 end

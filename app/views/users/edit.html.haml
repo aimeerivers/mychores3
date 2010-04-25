@@ -1,0 +1,9 @@
+- page_title 'Edit profile'
+
+- semantic_form_for @user, :url => user_path do |f|
+  - f.inputs do
+    = f.input 'name'
+    = f.input 'email'
+
+  - f.buttons do
+    = f.commit_button 'Update profile'

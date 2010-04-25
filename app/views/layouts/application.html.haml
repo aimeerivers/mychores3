@@ -5,14 +5,19 @@
     = formtastic_stylesheet_link_tag
 
   %body
-    %p MyChores
+    %p= link_to('MyChores', root_path)
 
     - if logged_in?
+      %p
+        Signed in as
+        = link_to(current_user.name, edit_user_path)
+
       = link_to('Sign out', sign_out_path, {:id => 'sign-out-link'})
     - else
       = link_to('Sign in', sign_in_path, {:id => 'sign-in-link'})
       or
       = link_to('Sign up', sign_up_path, {:id => 'sign-up-link'})
+      = rpx_popup( :link_text => "Register/Sign in with RPX", :app_name => ENV['RPX_REALM'], :return_url => rpx_url, :unobtrusive => false)
 
     %h2= yield(:title)
 

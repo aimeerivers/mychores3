@@ -1,0 +1,2 @@
+ENV['RPX_REALM'] = 'rpx-realm'
+ENV['RPX_API_KEY'] = 'api-key'
