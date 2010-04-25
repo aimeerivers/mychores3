@@ -9,6 +9,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem 'haml'
+  config.gem 'formtastic'
+  config.gem 'authlogic'
 
   # Skip frameworks you're not going to use. To use Rails without a database,
   # you must remove the Active Record framework.

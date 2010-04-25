@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title= yield(:title)
+    = formtastic_stylesheet_link_tag
+
+  %body
+    %p MyChores
+    = link_to('Sign out', {}, {:id => 'sign-out'})
+    %h2= yield(:title)
+
+    - if flash[:success]
+      .flash.success= flash[:success]
+    - if flash[:error]
+      .flash.error= flash[:error]
+
+    = yield
