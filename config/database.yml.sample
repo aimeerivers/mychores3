@@ -7,7 +7,7 @@ development:
   username: root
   password: 
 
-test:
+test: &TEST
   adapter: mysql
   encoding: utf8
   reconnect: false
@@ -24,3 +24,6 @@ production:
   pool: 5
   username: root
   password: 
+
+cucumber:
+  <<: *TEST
