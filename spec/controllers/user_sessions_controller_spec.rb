@@ -68,4 +68,30 @@ describe UserSessionsController do
     end
   end
 
+  describe "#destroy" do
+    before(:each) do
+      @current_user_session = mock_model(UserSession, :destroy => true)
+      controller.stub!(:current_user_session => @current_user_session)
+    end
+
+    def do_delete
+      delete :destroy
+    end
+
+    it "destroys the current user session" do
+      @current_user_session.should_receive(:destroy)
+      do_delete
+    end
+
+    it "provides feedback" do
+      do_delete
+      flash[:success].should_not be_blank
+    end
+
+    it "redirects to the home page" do
+      do_delete
+      response.should redirect_to(root_path)
+    end
+  end
+
 end

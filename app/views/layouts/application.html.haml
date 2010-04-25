@@ -8,7 +8,11 @@
     %p MyChores
 
     - if logged_in?
-      = link_to('Sign out', {}, {:id => 'sign-out'})
+      = link_to('Sign out', sign_out_path, {:id => 'sign-out-link'})
+    - else
+      = link_to('Sign in', sign_in_path, {:id => 'sign-in-link'})
+      or
+      = link_to('Sign up', sign_up_path, {:id => 'sign-up-link'})
 
     %h2= yield(:title)
 

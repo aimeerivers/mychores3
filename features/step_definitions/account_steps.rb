@@ -1,6 +1,6 @@
 Then /^I (should|should not) be signed in$/i do |should_or_not|
   method = should_or_not == 'should' ? :should : :should_not
-  page.send(method, have_css('a#sign-out'))
+  page.send(method, have_css('a#sign-out-link'))
 end
 
 Given /^a registered user called "([^\"]*)"$/ do |login|
@@ -41,6 +41,8 @@ def create_user(login, password='passw0rd')
 end
 
 def sign_in_as(user)
-  post user_session_path, :user_session => {:login => user.login, :password => user.password}
-  response.should be_redirect
+  visit sign_in_path
+  fill_in 'Login', :with => user.login
+  fill_in 'Password', :with => user.password
+  click_button 'Sign in'
 end
