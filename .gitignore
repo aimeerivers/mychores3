@@ -3,3 +3,4 @@ config/database.yml
 rerun.txt
 capybara-*
 config/initializers/rpx.rb
+db/import/*

@@ -41,6 +41,16 @@ Feature: New user signs up
       | whatever | should look like an email address |
       | a@b.c    | is too short                      |
 
+  Scenario: No requirement for unique email address
+    Given a registered user called "aimee"
+    When I fill in "Login" with "aimee2"
+    And I fill in "Email" with "aimee@test.com"
+    And I fill in "Password" with "passw0rd"
+    And I fill in "Password confirmation" with "passw0rd"
+    And I press "Sign up"
+    Then I should see "Signed up successfully"
+    And I should see "aimee2"
+
   Scenario Outline: invalid password values
     When I fill in "Password" with "<password>"
     And I fill in "Password confirmation" with "<confirmation>"

@@ -3,14 +3,14 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "application layout" do
   context "when logged in" do
     before(:each) do
-      @user = mock(:user, :name => 'aimee')
+      @user = mock(:user, :display_name => 'aimee')
       template.stub!(:logged_in? => true)
       template.stub!(:current_user => @user)
       render 'layouts/application'
     end
 
     it 'has link to the user profile' do
-      response.should have_tag('a', :content => @user.name)
+      response.should have_tag('a', :href => '/profile/edit', :content => @user.display_name)
     end
 
     it "has a sign out link" do
