@@ -1,0 +1,4 @@
+h1. MyChores
+
+h2. Version 3.0
+The plan is to rewrite MyChores and make it super awesome and speedy.
