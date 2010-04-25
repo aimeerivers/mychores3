@@ -1,0 +1,9 @@
+- page_title 'Sign in'
+
+- semantic_form_for @user_session, :url => create_user_session_path, :html => {:id => 'sign-in'} do |f|
+  - f.inputs do
+    = f.input :login
+    = f.input :password
+
+  - f.buttons do
+    = f.commit_button 'Sign in'

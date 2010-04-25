@@ -6,7 +6,10 @@
 
   %body
     %p MyChores
-    = link_to('Sign out', {}, {:id => 'sign-out'})
+
+    - if logged_in?
+      = link_to('Sign out', {}, {:id => 'sign-out'})
+
     %h2= yield(:title)
 
     - if flash[:success]
