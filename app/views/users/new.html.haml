@@ -9,3 +9,6 @@
 
   - f.buttons do
     = f.commit_button 'Sign up'
+
+%h3 Alternatively, use OpenID/RPX
+= rpx_embed(:app_name => ENV['RPX_REALM'], :return_url => rpx_url)
