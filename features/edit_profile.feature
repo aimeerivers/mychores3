@@ -9,3 +9,8 @@ Feature: Edit profile
     And I fill in "Email" with "new_email@test.com"
     And I press "Update profile"
     Then the email address for "aimee" should be "new_email@test.com"
+
+  Scenario: Profile editing requires being signed in
+    When I go to the edit profile page
+    Then I should see an error message
+    And I should be on the sign in page

@@ -7,7 +7,7 @@
   %body
     %p= link_to('MyChores', root_path)
 
-    - if logged_in?
+    - if signed_in?
       %p
         Signed in as
         = link_to(current_user.display_name, edit_user_path)

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20100425162913) do
   add_index "rpx_identifiers", ["user_id"], :name => "index_rpx_identifiers_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "login",             :default => "", :null => false
+    t.string   "login"
     t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"

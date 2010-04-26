@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "application layout" do
-  context "when logged in" do
+  context "when signed in" do
     before(:each) do
       @user = mock(:user, :display_name => 'aimee')
-      template.stub!(:logged_in? => true)
+      template.stub!(:signed_in? => true)
       template.stub!(:current_user => @user)
       render 'layouts/application'
     end
@@ -26,9 +26,9 @@ describe "application layout" do
     end
   end
 
-  context "when not logged in" do
+  context "when not signed in" do
     before(:each) do
-      template.stub!(:logged_in? => false)
+      template.stub!(:signed_in? => false)
       render 'layouts/application'
     end
 
