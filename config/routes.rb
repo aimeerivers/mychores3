@@ -15,5 +15,8 @@ ActionController::Routing::Routes.draw do |map|
   # Profile
   map.resource :user, :as => 'profile', :only => [:edit, :update]
 
+  # Teams
+  map.resources :teams
+
   map.root :controller => 'home'
 end

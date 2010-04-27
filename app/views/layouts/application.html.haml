@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title= yield(:title)
+    %title= h yield(:title)
     = formtastic_stylesheet_link_tag
 
   %body
@@ -18,11 +18,11 @@
       or
       = link_to('Sign up', sign_up_path, {:id => 'sign-up-link'})
 
-    %h2= yield(:title)
-
-    - if flash[:success]
-      .flash.success= flash[:success]
+    - if flash[:notice]
+      .flash.notice= flash[:notice]
     - if flash[:error]
       .flash.error= flash[:error]
+
+    %h2= h yield(:title)
 
     = yield

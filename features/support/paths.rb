@@ -19,6 +19,12 @@ module NavigationHelpers
 
     when 'the edit profile page'
       edit_user_path
+
+    when 'the new team page'
+      new_team_path
+
+    when /^the edit team page for "([^\"]*)"$/
+      edit_team_path(Team.find_by_name($1))
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -47,7 +47,7 @@ describe UserSessionsController do
 
       it "provides feedback" do
         do_post
-        flash[:success].should_not be_blank
+        flash[:notice].should_not be_blank
       end
 
       it "redirects to the home page" do
@@ -85,7 +85,7 @@ describe UserSessionsController do
 
     it "provides feedback" do
       do_delete
-      flash[:success].should_not be_blank
+      flash[:notice].should_not be_blank
     end
 
     it "redirects to the home page" do

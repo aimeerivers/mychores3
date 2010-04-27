@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = 'Signed up successfully'
+      flash[:notice] = 'Signed up successfully'
       redirect_to root_path
     else
       render :new
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:success] = 'Profile updated successfully.'
+      flash[:notice] = 'Profile updated successfully.'
       redirect_to edit_user_path
     else
       render :edit
