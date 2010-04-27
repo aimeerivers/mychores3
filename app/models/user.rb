@@ -5,12 +5,23 @@ class User < ActiveRecord::Base
     c.transition_from_restful_authentication = true
   end
 
+  has_many :memberships
+  has_many :teams, :through => :memberships
+
   def validate_uniqueness_of_email?
     false
   end
 
   def display_name
     name.blank? ? login : name
+  end
+
+  def add_to_team(team)
+    teams << team
+  end
+
+  def member_of?(team)
+    teams.include?(team)
   end
 end
 

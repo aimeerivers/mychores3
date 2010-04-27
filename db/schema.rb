@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100426172958) do
+ActiveRecord::Schema.define(:version => 20100427193913) do
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "memberships", ["team_id"], :name => "index_memberships_on_team_id"
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "rpx_identifiers", :force => true do |t|
     t.string   "identifier",    :null => false
