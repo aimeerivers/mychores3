@@ -16,6 +16,15 @@ Given /^I am signed in as a user called "([^\"]*)"$/ do |login|
   sign_in_as(user)
 end
 
+Given /^user "([^\"]*)" in team "([^\"]*)"$/ do |login, team|
+  user = create_user(login)
+  sign_in_as(user)
+  steps %Q{
+    Given a team called "#{team}"
+    And "#{login}" is a member of team "#{team}"
+  }
+end
+
 Given /^I am a new visitor$/ do
   # TODO: implement, nothing to do yet
 end

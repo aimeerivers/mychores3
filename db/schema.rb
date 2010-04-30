@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100427193913) do
+ActiveRecord::Schema.define(:version => 20100430072612) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "team_id"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(:version => 20100427193913) do
   add_index "rpx_identifiers", ["identifier"], :name => "index_rpx_identifiers_on_identifier", :unique => true
   add_index "rpx_identifiers", ["user_id"], :name => "index_rpx_identifiers_on_user_id"
 
+  create_table "tasks", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "due_on"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["team_id"], :name => "index_tasks_on_team_id"
+
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -40,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20100427193913) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",             :default => "", :null => false
+    t.string   "login"
     t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"

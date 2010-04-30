@@ -23,6 +23,9 @@ module NavigationHelpers
     when 'the new team page'
       new_team_path
 
+    when 'the new task page'
+      new_task_path
+
     when /^the edit team page for "([^\"]*)"$/
       edit_team_path(Team.find_by_name($1))
     

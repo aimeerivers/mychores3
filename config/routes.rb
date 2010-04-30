@@ -18,5 +18,8 @@ ActionController::Routing::Routes.draw do |map|
   # Teams
   map.resources :teams
 
+  # Tasks
+  map.resources :tasks
+
   map.root :controller => 'home'
 end
