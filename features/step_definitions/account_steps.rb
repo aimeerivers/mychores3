@@ -44,7 +44,7 @@ def create_user(login, password='passw0rd')
   return user if user
 
   User.create!(:login => login,
-               :email => "#{login}@test.com",
+               :person => Person.new(:email => "#{login}@test.com"),
                :password => password,
                :password_confirmation => password)
 end

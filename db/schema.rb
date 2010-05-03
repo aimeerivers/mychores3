@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100430072612) do
+ActiveRecord::Schema.define(:version => 20100503142209) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "team_id"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20100430072612) do
 
   add_index "memberships", ["team_id"], :name => "index_memberships_on_team_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rpx_identifiers", :force => true do |t|
     t.string   "identifier",    :null => false
@@ -52,13 +59,14 @@ ActiveRecord::Schema.define(:version => 20100430072612) do
 
   create_table "users", :force => true do |t|
     t.string   "login"
-    t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.integer  "person_id"
   end
+
+  add_index "users", ["person_id"], :name => "index_users_on_person_id", :unique => true
 
 end

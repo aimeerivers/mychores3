@@ -1,6 +1,6 @@
 - page_title 'Edit profile'
 
-- semantic_form_for @user, :url => user_path do |f|
+- semantic_form_for @user.person, :url => user_path do |f|
   - f.inputs do
     = f.input 'name'
     = f.input 'email'

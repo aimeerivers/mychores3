@@ -1,19 +1,36 @@
 class User < ActiveRecord::Base
   acts_as_authentic do |c|
     c.account_mapping_mode :internal
-    c.validates_uniqueness_of_email_field_options = {:if => :validate_uniqueness_of_email?}
     c.transition_from_restful_authentication = true
   end
 
   has_many :memberships
   has_many :teams, :through => :memberships
+  belongs_to :person
 
-  def validate_uniqueness_of_email?
-    false
+  def initialize(params = {})
+    params.merge!(:person => Person.new) unless params[:person]
+    super(params)
   end
 
   def display_name
-    name.blank? ? login : name
+    person.name.blank? ? login : person.name
+  end
+
+  def email=(email)
+    person.email=email
+  end
+
+  def email
+    person.email
+  end
+
+  def name=(name)
+    person.name = name
+  end
+
+  def name
+    person.name
   end
 
   def add_to_team(team)
