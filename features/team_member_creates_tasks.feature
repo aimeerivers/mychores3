@@ -3,7 +3,7 @@ Feature: Team member creates tasks
   As a team member
   I want to create tasks for my team
 
-  Scenario: Team member creates a team
+  Scenario: Team member creates a task
     Given user "aimee" in team "Household"
     When I go to the new task page
     And I fill in the following:
