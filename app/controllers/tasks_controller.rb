@@ -1,15 +1,16 @@
 class TasksController < ApplicationController
+  before_filter :sign_in_required
 
   def new
     @task = Task.new
   end
 
   def create
-    @task = Task.new(params[:task])
-    if @task.save
+    begin
+      @task = current_user.assign(Task.new(params[:task]))
       flash[:notice] = 'Task created successfully.'
       redirect_to(task_path(@task))
-    else
+    rescue
       render :new
     end
   end

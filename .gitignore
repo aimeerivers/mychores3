@@ -4,3 +4,4 @@ rerun.txt
 capybara-*
 config/initializers/rpx.rb
 db/import/*
+vendor/*

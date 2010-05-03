@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
   def member_of?(team)
     teams.include?(team)
   end
+
+  def assign(task)
+    return task if task.save
+    raise 'Could not save task'
+  end
 end
 
 # Provided for transition from old Restful Authentication

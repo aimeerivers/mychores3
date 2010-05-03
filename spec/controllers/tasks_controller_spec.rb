@@ -1,6 +1,16 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe TasksController do
+  before do
+    controller.stub!(:current_user => create_user) 
+  end
+
+  def create_user
+    Factory(:user)
+    #User.destroy_all
+    #User.create!(:login => 'memememe', :password => 's3cr3t', 
+                 #:password_confirmation => 's3cr3t', :email => 'me@meme.com')
+  end
 
   describe '#new' do
     before do
