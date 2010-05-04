@@ -87,13 +87,13 @@ describe UsersController do
 
   describe '#update' do
     before do
-      @user = mock_model(User, :update_attributes => true)
+      @user = mock_model(User, :person => mock_model(Person, :update_attributes => true))
       controller.stub!(:current_user => @user)
       @user_params = {'email' => 'new email'}
     end
 
     def do_post
-      post :update, :user => @user_params
+      post :update, :person => @user_params
     end
 
     it 'finds the user' do
@@ -102,15 +102,11 @@ describe UsersController do
     end
 
     it 'tries to update the user' do
-      @user.should_receive(:update_attributes).with(@user_params)
+      @user.person.should_receive(:update_attributes).with(@user_params)
       do_post
     end
 
     context 'successful update' do
-      before do
-        @user.stub!(:update_attributes => true)
-      end
-
       it 'redirects to the edit profile page' do
         do_post
         response.should redirect_to(edit_user_path)
@@ -124,7 +120,7 @@ describe UsersController do
 
     context 'when update fails' do
       before do
-        @user.stub!(:update_attributes => false)
+        @user.person.stub!(:update_attributes => false)
       end
 
       it 'shows the edit page again' do

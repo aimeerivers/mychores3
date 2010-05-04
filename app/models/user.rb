@@ -6,31 +6,17 @@ class User < ActiveRecord::Base
 
   has_many :memberships
   has_many :teams, :through => :memberships
-  belongs_to :person
+
+  has_one :person
+  accepts_nested_attributes_for :person
 
   def initialize(params = {})
-    params.merge!(:person => Person.new) unless params[:person]
+    params.merge!(:person => Person.new) unless params[:person_attributes]
     super(params)
   end
 
   def display_name
     person.name.blank? ? login : person.name
-  end
-
-  def email=(email)
-    person.email=email
-  end
-
-  def email
-    person.email
-  end
-
-  def name=(name)
-    person.name = name
-  end
-
-  def name
-    person.name
   end
 
   def add_to_team(team)
@@ -45,6 +31,7 @@ class User < ActiveRecord::Base
     return task if task.save
     raise 'Could not save task'
   end
+
 end
 
 # Provided for transition from old Restful Authentication

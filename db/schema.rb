@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100503142209) do
+ActiveRecord::Schema.define(:version => 20100504075755) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "team_id"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(:version => 20100503142209) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "people", ["user_id"], :name => "index_people_on_user_id", :unique => true
 
   create_table "rpx_identifiers", :force => true do |t|
     t.string   "identifier",    :null => false
@@ -64,9 +67,6 @@ ActiveRecord::Schema.define(:version => 20100503142209) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "person_id"
   end
-
-  add_index "users", ["person_id"], :name => "index_users_on_person_id", :unique => true
 
 end

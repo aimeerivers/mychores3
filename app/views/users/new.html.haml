@@ -3,7 +3,8 @@
 - semantic_form_for @user, :url => create_user_path, :html => {:id => 'sign-up'} do |f|
   - f.inputs do
     = f.input :login
-    = f.input :email
+    - f.semantic_fields_for :person do |person|
+      = person.input :email
     = f.input :password
     = f.input :password_confirmation
 
