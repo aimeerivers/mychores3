@@ -2,27 +2,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe User do
 
-  describe '#display_name' do
-    it 'uses the name when the user has set one' do
-      user = User.new(:person_attributes => person_attributes('aimee'), :login => 'sermoa')
-      user.display_name.should == 'aimee'
-    end
-
-    it 'uses the login when the name is not set' do
-      user = User.new(:login => 'sermoa', :person_attributes => person_attributes(nil))
-      user.display_name.should == 'sermoa'
-    end
-
-    it 'uses the login when the name is blank' do
-      user = User.new(:login => 'sermoa', :person_attributes => person_attributes(' '))
-      user.display_name.should == 'sermoa'
-    end
-
-    def person_attributes(name)
-      { :name => name }
-    end
-  end
-
   describe '#add_to_team' do
     it 'adds the user into the team' do
       user = User.new

@@ -13,10 +13,10 @@ class UserSession < Authlogic::Session::Base
   def map_rpx_data
     # map core profile data using authlogic indirect column names
     self.attempted_record.send("#{klass.login_field}=", @rpx_data['profile']['preferredUsername'] ) if attempted_record.send(klass.login_field).blank?
-    self.attempted_record.send("#{klass.email_field}=", @rpx_data['profile']['email'] ) if attempted_record.send(klass.email_field).blank?
+    self.attempted_record.person.email = @rpx_data['profile']['email'] if attempted_record.person.email.blank?
 
     # map some other columns explicitly
-    self.attempted_record.name = @rpx_data['profile']['displayName'] if attempted_record.name.blank?
+    self.attempted_record.person.name = @rpx_data['profile']['displayName'] if attempted_record.person.name.blank?
 
     if rpx_extended_info?
       # map some extended attributes

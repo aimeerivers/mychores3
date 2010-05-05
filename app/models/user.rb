@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
     super(params)
   end
 
-  def display_name
-    person.name.blank? ? login : person.name
-  end
-
   def add_to_team(team)
     teams << team
   end
