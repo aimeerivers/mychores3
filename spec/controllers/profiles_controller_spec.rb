@@ -87,7 +87,7 @@ describe ProfilesController do
 
   describe '#update' do
     before do
-      @user = mock_model(User, :update_attributes => true)
+      @user = mock_model(User, :attributes= => true, :save => true)
       controller.stub!(:current_user => @user)
       @user_params = {'email' => 'new email'}
     end
@@ -101,14 +101,19 @@ describe ProfilesController do
       do_post
     end
 
-    it 'tries to update the user' do
-      @user.should_receive(:update_attributes).with(@user_params)
+    it 'updates the user attributes' do
+      @user.should_receive(:attributes=).with(@user_params)
+      do_post
+    end
+
+    it 'tries to save the user' do
+      @user.should_receive(:save).with(:validate => true)
       do_post
     end
 
     context 'successful update' do
       before do
-        @user.stub!(:update_attributes => true)
+        @user.stub!(:save => true)
       end
 
       it 'redirects to the edit profile page' do
@@ -124,7 +129,7 @@ describe ProfilesController do
 
     context 'when update fails' do
       before do
-        @user.stub!(:update_attributes => false)
+        @user.stub!(:save => false)
       end
 
       it 'shows the edit page again' do

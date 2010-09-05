@@ -21,7 +21,8 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
+    @user.attributes = params[:user]
+    if @user.save(:validate => true)
       flash[:notice] = 'Profile updated successfully.'
       redirect_to edit_user_path
     else
