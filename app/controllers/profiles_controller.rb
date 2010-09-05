@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class ProfilesController < ApplicationController
 
   before_filter :find_user, :only => [:edit, :update]
   before_filter :sign_in_required, :only => [:edit, :update]

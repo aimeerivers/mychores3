@@ -15,14 +15,21 @@ group :cucumber do
   gem 'database_cleaner', '>= 0.5.0'
   gem 'cucumber-rails', '>= 0.3.0'
   gem 'cucumber', '0.8.5'
-  gem 'rspec-rails', '>= 2.0.0.beta.10'
+  gem 'rspec-rails', '>= 2.0.0.beta.20'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
 end
 
+group :test, :development do
+  gem 'rspec-rails', '>= 2.0.0.beta.20'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'webrat'
+end
+
 group :development do
-  gem 'rspec-rails', '>= 2.0.0.beta.10'
-  gem 'factory_girl'
   gem 'mongrel'
   gem 'fastercsv'
 end

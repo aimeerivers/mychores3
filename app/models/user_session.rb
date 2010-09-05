@@ -1,4 +1,5 @@
 class UserSession < Authlogic::Session::Base
+  extend ActiveModel::Naming
 
   rpx_key ENV['RPX_API_KEY']
   auto_register true

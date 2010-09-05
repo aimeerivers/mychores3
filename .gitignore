@@ -1,4 +1,5 @@
 log/*
+tmp/*
 config/database.yml
 rerun.txt
 capybara-*
