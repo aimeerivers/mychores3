@@ -1,25 +1,25 @@
-ActionController::Routing::Routes.draw do |map|
+Mychores3::Application.routes.draw do
 
   # Sign up
-  map.sign_up '/sign-up', :controller => 'users', :action => 'new', :conditions => {:method => :get}
-  map.create_user '/sign-up', :controller => 'users', :action => 'create', :conditions => {:method => :post}
+  match '/sign-up' => 'users#new', :as => :sign_up, :conditions => {:method => :get}
+  match '/sign-up' => 'users#create', :as => :create_user, :conditions => {:method => :post}
 
   # Sign in
-  map.sign_in '/sign-in', :controller => 'user_sessions', :action => 'new', :conditions => {:method => :get}
-  map.create_user_session '/sign-in', :controller => 'user_sessions', :action => 'create', :conditions => {:method => :post}
-  map.rpx '/rpx', :controller => 'user_sessions', :action => 'create'
+  match '/sign-in' => 'user_sessions#new', :as => :sign_in, :conditions => {:method => :get}
+  match '/sign-in' => 'user_sessions#create', :as => :create_user_session, :conditions => {:method => :post}
+  match '/rpx' => 'user_sessions#create', :as => :rpx
 
   # Sign out
-  map.sign_out '/sign-out', :controller => 'user_sessions', :action => 'destroy'
+  match '/sign-out' => 'user_sessions#destroy', :as => :sign_out
 
   # Profile
-  map.resource :user, :as => 'profile', :only => [:edit, :update]
+  resource :user, :as => :profile, :only => [:edit, :update]
 
   # Teams
-  map.resources :teams
+  resources :teams
 
   # Tasks
-  map.resources :tasks
+  resources :tasks
 
-  map.root :controller => 'home'
+  root :to => 'home#index'
 end

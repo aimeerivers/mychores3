@@ -1,14 +1,14 @@
 - page_title 'Sign up to MyChores'
 
-- semantic_form_for @user, :url => create_user_path, :html => {:id => 'sign-up'} do |f|
-  - f.inputs do
+= semantic_form_for @user, :url => create_user_path, :html => {:id => 'sign-up'} do |f|
+  = f.inputs do
     = f.input :login
     = f.input :email
     = f.input :password
     = f.input :password_confirmation
 
-  - f.buttons do
+  = f.buttons do
     = f.commit_button 'Sign up'
 
 %h3 Alternatively, use OpenID/RPX
-= rpx_embed(:app_name => ENV['RPX_REALM'], :return_url => rpx_url)
+= rpx_embed(:app_name => ENV['RPX_REALM'], :return_url => rpx_url).html_safe
