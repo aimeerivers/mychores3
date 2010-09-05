@@ -16,9 +16,9 @@ def select_date(date_to_select, options ={})
 
   id_prefix = id_prefix_for(options)
 
-  select date.year, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:year]}"
+  select date.year.to_s, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:year]}"
   select date.strftime('%B'), :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:month]}"
-  select date.day, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:day]}"
+  select date.day.to_s, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:day]}"
 end
 
 def id_prefix_for(options = {})

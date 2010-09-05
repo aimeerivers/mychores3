@@ -153,10 +153,10 @@ PLATFORMS
 DEPENDENCIES
   authlogic!
   authlogic_rpx (>= 1.1.1)
-  capybara (>= 0.3.0)
-  cucumber (= 0.8.5)
-  cucumber-rails (>= 0.3.0)
-  database_cleaner (>= 0.5.0)
+  capybara
+  cucumber
+  cucumber-rails (>= 0.3.2)
+  database_cleaner
   factory_girl_rails
   fastercsv
   formtastic (= 1.1.0.beta)

@@ -1,5 +1,5 @@
 development:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: mychores3_development
@@ -9,7 +9,7 @@ development:
   socket: /var/run/mysqld/mysqld.sock 
 
 test: &TEST
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: mychores3_test
@@ -18,7 +18,7 @@ test: &TEST
   password: 
 
 production:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: mychores3_production
